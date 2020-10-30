@@ -2,8 +2,6 @@
 
 A new Flutter application.
 
-Yashwin Gandhu hai
-
 
 ## Getting Started  
 
