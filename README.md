@@ -2,8 +2,6 @@
 
 A new Flutter application.
 
-blehhhhhhhhh
-
 
 ## Getting Started  
 
