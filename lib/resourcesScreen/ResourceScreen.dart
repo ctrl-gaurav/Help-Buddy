@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:help_buddy/thirdScreen/AssignmentsDate.dart';
@@ -17,11 +18,15 @@ class ResourceScreen extends StatelessWidget {
 }
 
 class MyResourcePage extends StatefulWidget {
+
+
   @override
   _MyResourcePageState createState() => _MyResourcePageState();
 }
 
 class _MyResourcePageState extends State<MyResourcePage> {
+
+  final _auth = FirebaseAuth.instance;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,6 +43,7 @@ class _MyResourcePageState extends State<MyResourcePage> {
                   color: Colors.white,
                   onPressed: () {
                     Navigator.pop(context);
+                    Navigator.pop(context);
                   },
                 ),
                 Container(
@@ -46,14 +52,19 @@ class _MyResourcePageState extends State<MyResourcePage> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
                         IconButton(
-                          icon: Icon(Icons.filter_list),
+                          icon: Icon(Icons.info_outline),
                           color: Colors.white,
                           onPressed: () {},
                         ),
                         IconButton(
-                          icon: Icon(Icons.menu),
+                          icon: Icon(Icons.exit_to_app),
                           color: Colors.white,
-                          onPressed: () {},
+                          onPressed: () async {
+                              await _auth.signOut();
+                              Navigator.pop(context);
+                              Navigator.pop(context);
+
+                          },
                         )
                       ],
                     ))
@@ -108,34 +119,35 @@ class _MyResourcePageState extends State<MyResourcePage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
-                    Container(
-                      height: 55.0,
-                      width: 50.0,
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                            color: Colors.grey,
-                            style: BorderStyle.solid,
-                            width: 1.0),
-                        borderRadius: BorderRadius.circular(10.0),
-                      ),
-                      child: Center(
-                        child: Icon(Icons.search, color: Colors.black),
-                      ),
-                    ),
-                    Container(
-                      height: 55.0,
-                      width: 50.0,
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                            color: Colors.grey,
-                            style: BorderStyle.solid,
-                            width: 1.0),
-                        borderRadius: BorderRadius.circular(10.0),
-                      ),
-                      child: Center(
-                        child: Icon(Icons.account_circle, color: Colors.black),
-                      ),
-                    ),
+                    // Container(
+                    //   height: 55.0,
+                    //   width: 50.0,
+                    //   decoration: BoxDecoration(
+                    //     border: Border.all(
+                    //         color: Colors.grey,
+                    //         style: BorderStyle.solid,
+                    //         width: 1.0),
+                    //     borderRadius: BorderRadius.circular(10.0),
+                    //   ),
+                    //   child: Center(
+                    //     child: Icon(Icons.search, color: Colors.black),
+                    //   ),
+                    // ),
+                    // Container(
+                    //   height: 55.0,
+                    //   width: 50.0,
+                    //   decoration: BoxDecoration(
+                    //     border: Border.all(
+                    //         color: Colors.grey,
+                    //         style: BorderStyle.solid,
+                    //         width: 1.0),
+                    //     borderRadius: BorderRadius.circular(10.0),
+                    //   ),
+                    //   child: Center(
+                    //     child: Icon(Icons.account_circle, color: Colors.black),
+                    //   ),
+                    // ),
+                    SizedBox(width: 200,),
                     Container(
                       height: 55.0,
                       width: 100.0,
@@ -152,7 +164,7 @@ class _MyResourcePageState extends State<MyResourcePage> {
                                   fontFamily: 'Montserrat',
                                   color: Colors.white,
                                   fontSize: 15.0))),
-                    )
+                    ),
                   ],
                 ),
               ],

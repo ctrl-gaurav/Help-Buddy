@@ -3,6 +3,7 @@ import 'package:help_buddy/resourcesScreen/ResourceScreen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:help_buddy/secondScreen/rounded_button.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class SecondScreen extends StatefulWidget {
   @override
@@ -206,7 +207,24 @@ class _SecondScreenState extends State<SecondScreen> {
                               showSpinner=false;
                             });
                           } catch (e) {
-                            print(e);
+                            // Fluttertoast.showToast(
+                            //     msg: "This is Center Short Toast",
+                            //     toastLength: Toast.LENGTH_SHORT,
+                            //     gravity: ToastGravity.CENTER,
+                            //     timeInSecForIosWeb: 1,
+                            //     backgroundColor: Colors.red,
+                            //     textColor: Colors.white,
+                            //     fontSize: 16.0
+                            // );
+                            Fluttertoast.showToast(
+                                msg: e.toString(),
+                                toastLength: Toast.LENGTH_SHORT,
+                                gravity: ToastGravity.CENTER,
+                              timeInSecForIosWeb: 5,
+                            );
+                            setState(() {
+                              showSpinner=false;
+                            });
                           }
                         },
                       ),
