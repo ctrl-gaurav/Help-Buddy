@@ -149,50 +149,50 @@ class _TomorrowScheduleState extends State<TomorrowSchedule> {
 
               // for developers
 
-              Container(
-                decoration: BoxDecoration(
-                  border: Border(
-                    top: BorderSide(color: Colors.lightBlueAccent, width: 2.0),
-                  ),
-                ),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
-                    Expanded(
-                      child: TextField(
-                        controller: messageTextController,
-                        onChanged: (value) {
-                          messageText = value;
-                        },
-                        decoration: InputDecoration(
-                          contentPadding: EdgeInsets.symmetric(
-                              vertical: 10.0, horizontal: 20.0),
-                          hintText: 'Hi there...',
-                          border: InputBorder.none,
-                        ),
-                      ),
-                    ),
-                    FlatButton(
-                      onPressed: () {
-                        messageTextController.clear();
-                        _firestore.collection("TomorrowSchedule").add({
-                          'SubjectTiming': messageText,
-                          'time': FieldValue.serverTimestamp(),
-                          //'sender': "gaurav@email.com",
-                        });
-                      },
-                      child: Text(
-                        'Send',
-                        style: TextStyle(
-                          color: Colors.orangeAccent,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18.0,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+              // Container(
+              //   decoration: BoxDecoration(
+              //     border: Border(
+              //       top: BorderSide(color: Colors.lightBlueAccent, width: 2.0),
+              //     ),
+              //   ),
+              //   child: Row(
+              //     crossAxisAlignment: CrossAxisAlignment.center,
+              //     children: <Widget>[
+              //       Expanded(
+              //         child: TextField(
+              //           controller: messageTextController,
+              //           onChanged: (value) {
+              //             messageText = value;
+              //           },
+              //           decoration: InputDecoration(
+              //             contentPadding: EdgeInsets.symmetric(
+              //                 vertical: 10.0, horizontal: 20.0),
+              //             hintText: 'Hi there...',
+              //             border: InputBorder.none,
+              //           ),
+              //         ),
+              //       ),
+              //       FlatButton(
+              //         onPressed: () {
+              //           messageTextController.clear();
+              //           _firestore.collection("TomorrowSchedule").add({
+              //             'SubjectTiming': messageText,
+              //             'time': FieldValue.serverTimestamp(),
+              //             //'sender': "gaurav@email.com",
+              //           });
+              //         },
+              //         child: Text(
+              //           'Send',
+              //           style: TextStyle(
+              //             color: Colors.orangeAccent,
+              //             fontWeight: FontWeight.bold,
+              //             fontSize: 18.0,
+              //           ),
+              //         ),
+              //       ),
+              //     ],
+              //   ),
+              // ),
             ],
           ),
         ),
