@@ -17,14 +17,27 @@ class SplashContent extends StatelessWidget {
         Spacer(),
         Text(
           "Help Buddy",
+          // style: TextStyle(
+          //   fontSize: getProportionateScreenWidth(36),
+          //   color: Color(0xff0c2551),
+          //   fontWeight: FontWeight.bold,
+          // ),
           style: TextStyle(
+            fontFamily: 'Cardo',
             fontSize: getProportionateScreenWidth(36),
-            color: kPrimaryColor,
-            fontWeight: FontWeight.bold,
+            color: Color(0xff0C2551),
+            fontWeight: FontWeight.w800,
           ),
         ),
+        SizedBox(height: 20,),
         Text(
           text,
+          style: TextStyle(
+            fontFamily: 'Product Sans',
+            fontSize: 15.5,
+            fontWeight: FontWeight.bold,
+            color: Color(0xff8f9db5),
+          ),
           textAlign: TextAlign.center,
         ),
         Spacer(flex: 2),

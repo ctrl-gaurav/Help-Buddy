@@ -16,16 +16,16 @@ class _BodyState extends State<Body> {
   int currentPage = 0;
   List<Map<String, String>> splashData = [
     {
-      "text": "Add Something !",
+      "text": "You Buddy is here to help you ....\n Get all your resources here ..",
+      "image": "assets/images/splash_3.png"
+    },
+    {
+      "text": "Never miss a deadline or Class ",
       "image": "assets/images/splash_1.png"
     },
     {
-      "text": "Add Something !",
+      "text": "Revisit your recorded lectures whenever you want ",
       "image": "assets/images/splash_2.png"
-    },
-    {
-      "text": "Add Something !",
-      "image": "assets/images/splash_3.png"
     },
   ];
   @override
@@ -69,18 +69,21 @@ class _BodyState extends State<Body> {
                     Spacer(
                       flex: 3,
                     ),
-                    DefaultButton(
-                      text: "Let's Go",
-                      press: () {
-                       // Navigator.pushNamed(context, '/second');
-                        Navigator.push(
-                          context,
-                          PageRouteBuilder(
-                            pageBuilder: (_, __, ___) => SecondScreen(
+                    Padding(
+                      padding: const EdgeInsets.all(60.0),
+                      child: DefaultButton(
+                        text: "Let's Go",
+                        press: () {
+                         // Navigator.pushNamed(context, '/second');
+                          Navigator.push(
+                            context,
+                            PageRouteBuilder(
+                              pageBuilder: (_, __, ___) => SecondScreen(
+                              ),
                             ),
-                          ),
-                        );
-                      },
+                          );
+                        },
+                      ),
                     ),
                     SizedBox(height: 80.0,),
                     Spacer(),

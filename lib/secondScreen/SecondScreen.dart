@@ -13,7 +13,6 @@ class SecondScreen extends StatefulWidget {
 // First Commit
 
 class _SecondScreenState extends State<SecondScreen> {
-
   final _auth = FirebaseAuth.instance;
   bool showSpinner = false;
   String email;
@@ -27,10 +26,8 @@ class _SecondScreenState extends State<SecondScreen> {
       if (user != null) {
         print("user is logged in");
         //navigate to home page using Navigator Widget
-        Navigator.push(
-            context,
-            new MaterialPageRoute(
-                builder: (context) => MyResourcePage()));
+        Navigator.push(context,
+            new MaterialPageRoute(builder: (context) => MyResourcePage()));
       }
     });
   }
@@ -131,8 +128,10 @@ class _SecondScreenState extends State<SecondScreen> {
                                 fontWeight: FontWeight.bold,
                                 color: Colors.grey),
                             enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.greenAccent, width: 1.0),
-                              borderRadius: BorderRadius.all(Radius.circular(32.0)),
+                              borderSide: BorderSide(
+                                  color: Colors.greenAccent, width: 1.0),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(32.0)),
                             ),
                             focusedBorder: UnderlineInputBorder(
                               borderSide: BorderSide(color: Colors.green),
@@ -160,8 +159,10 @@ class _SecondScreenState extends State<SecondScreen> {
                                 fontWeight: FontWeight.bold,
                                 color: Colors.grey),
                             enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.greenAccent, width: 1.0),
-                              borderRadius: BorderRadius.all(Radius.circular(32.0)),
+                              borderSide: BorderSide(
+                                  color: Colors.greenAccent, width: 1.0),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(32.0)),
                             ),
                             focusedBorder: UnderlineInputBorder(
                               borderSide: BorderSide(color: Colors.green),
@@ -192,7 +193,7 @@ class _SecondScreenState extends State<SecondScreen> {
                         fontSize: 20,
                         press: () async {
                           setState(() {
-                            showSpinner=true;
+                            showSpinner = true;
                           });
                           try {
                             final user = await _auth.signInWithEmailAndPassword(
@@ -204,7 +205,7 @@ class _SecondScreenState extends State<SecondScreen> {
                                       builder: (context) => MyResourcePage()));
                             }
                             setState(() {
-                              showSpinner=false;
+                              showSpinner = false;
                             });
                           } catch (e) {
                             // Fluttertoast.showToast(
@@ -217,13 +218,13 @@ class _SecondScreenState extends State<SecondScreen> {
                             //     fontSize: 16.0
                             // );
                             Fluttertoast.showToast(
-                                msg: e.toString(),
-                                toastLength: Toast.LENGTH_SHORT,
-                                gravity: ToastGravity.CENTER,
+                              msg: e.toString(),
+                              toastLength: Toast.LENGTH_SHORT,
+                              gravity: ToastGravity.CENTER,
                               timeInSecForIosWeb: 5,
                             );
                             setState(() {
-                              showSpinner=false;
+                              showSpinner = false;
                             });
                           }
                         },
@@ -242,7 +243,7 @@ class _SecondScreenState extends State<SecondScreen> {
                             ),
                           ),
                           TextSpan(
-                            text: 'Sign Up',
+                            text: 'Contact Us',
                             style: TextStyle(
                               fontFamily: 'Product Sans',
                               fontSize: 15,
@@ -252,6 +253,33 @@ class _SecondScreenState extends State<SecondScreen> {
                           )
                         ],
                       ),
+                    ),
+                    SizedBox(
+                      height: 180,
+                    ),
+                    Row(
+                      children: <Widget>[
+                        SizedBox(
+                          width: 280,
+                        ),
+                        Container(
+                          height: 55.0,
+                          width: 125.0,
+                          decoration: BoxDecoration(
+                              border: Border.all(
+                                  color: Colors.grey,
+                                  style: BorderStyle.solid,
+                                  width: 1.0),
+                              borderRadius: BorderRadius.circular(30.0),
+                              color: Color(0xFF1C1428)),
+                          child: FlatButton(
+                              child: Text('Contact Us',
+                                  style: TextStyle(
+                                      fontFamily: 'Montserrat',
+                                      color: Colors.white,
+                                      fontSize: 15.0))),
+                        ),
+                      ],
                     ),
                   ],
                 ),
