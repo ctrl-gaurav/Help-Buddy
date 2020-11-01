@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:help_buddy/ourScreen/AboutUs.dart';
 import 'package:help_buddy/ourScreen/Announcements.dart';
 import 'package:help_buddy/thirdScreen/AssignmentsDate.dart';
 import 'package:help_buddy/thirdScreen/ClassesLectures.dart';
@@ -97,6 +98,41 @@ class _MyResourcePageState extends State<MyResourcePage> {
               ],
             ),
           ),
+          Padding(
+            padding: EdgeInsets.only(left: 40.0),
+            child: Row(
+              children: <Widget>[
+                SizedBox(width: 240,),
+                Container(
+                  height: 45.0,
+                  width: 100.0,
+                  decoration: BoxDecoration(
+                      border: Border.all(
+                          color: Colors.white,
+                          style: BorderStyle.solid,
+                          width: 1.0),
+                      borderRadius: BorderRadius.circular(30.0),
+                      color: Colors.white),
+                  child: FlatButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          PageRouteBuilder(
+                            // transitionDuration: Duration(seconds: 1),
+                            pageBuilder: (_, __, ___) => AboutUs(),
+                          ),
+                        );
+                      },
+                      child: Text('About Us',
+                          style: TextStyle(
+                              fontFamily: 'Montserrat',
+                              color: Colors.black54,
+                              fontSize: 15.0))),
+                ),
+              ],
+            ),
+          ),
+
           SizedBox(height: 35.0),
           Container(
             height: MediaQuery.of(context).size.height - 185.0,
@@ -121,7 +157,41 @@ class _MyResourcePageState extends State<MyResourcePage> {
                         _buildFoodItem3('assets/resources.png',
                             'Resources and Material', ''),
                         _buildFoodItem4(
-                            'assets/lecture.png', 'Classes Lectures', '')
+                            'assets/lecture.png', 'Classes Lectures', ''),
+                        SizedBox(height: 100.0,),
+                        Row(
+                          children: <Widget>[
+                            SizedBox(
+                              width: 210,
+                            ),
+                            Container(
+                              height: 55.0,
+                              width: 125.0,
+                              decoration: BoxDecoration(
+                                  border: Border.all(
+                                      color: Colors.grey,
+                                      style: BorderStyle.solid,
+                                      width: 1.0),
+                                  borderRadius: BorderRadius.circular(30.0),
+                                  color: Color(0xFF1C1428)),
+                              child: FlatButton(
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      PageRouteBuilder(
+                                        // transitionDuration: Duration(seconds: 1),
+                                        pageBuilder: (_, __, ___) => ContactUs(),
+                                      ),
+                                    );
+                                  },
+                                  child: Text('Contact Us',
+                                      style: TextStyle(
+                                          fontFamily: 'Montserrat',
+                                          color: Colors.white,
+                                          fontSize: 15.0))),
+                            ),
+                          ],
+                        ),
                       ],
                     ),
                   ),
@@ -188,39 +258,7 @@ class _MyResourcePageState extends State<MyResourcePage> {
                 //   ],
                 // ),
 
-                Row(
-                  children: <Widget>[
-                    SizedBox(
-                      width: 210,
-                    ),
-                    Container(
-                      height: 55.0,
-                      width: 125.0,
-                      decoration: BoxDecoration(
-                          border: Border.all(
-                              color: Colors.grey,
-                              style: BorderStyle.solid,
-                              width: 1.0),
-                          borderRadius: BorderRadius.circular(30.0),
-                          color: Color(0xFF1C1428)),
-                      child: FlatButton(
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              PageRouteBuilder(
-                                // transitionDuration: Duration(seconds: 1),
-                                pageBuilder: (_, __, ___) => ContactUs(),
-                              ),
-                            );
-                          },
-                          child: Text('Contact Us',
-                              style: TextStyle(
-                                  fontFamily: 'Montserrat',
-                                  color: Colors.white,
-                                  fontSize: 15.0))),
-                    ),
-                  ],
-                ),
+
               ],
             ),
           )

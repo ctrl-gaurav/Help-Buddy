@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -82,6 +83,23 @@ class _AnnouncementsState extends State<Announcements> {
                 width: 10.0,
                 height: 20.0,
               ),
+              Center(
+                child: Text(
+                  "Here all the announcements regarding the \n app you will see ! ",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontFamily: 'Product Sans',
+                    fontSize: 19.5,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black54,
+                  ),
+                  //
+                ),
+              ),
+              SizedBox(
+                width: 10.0,
+                height: 20.0,
+              ),
               // Container(
               //   child: Container(
               //       decoration: BoxDecoration(
@@ -99,13 +117,14 @@ class _AnnouncementsState extends State<Announcements> {
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 50.0),
                 child: Text(
-                  'Announcements',
+                  'Announcements : ',
                   style: TextStyle(
                       fontFamily: 'Montserrat',
                       fontSize: 25.0,
                       fontWeight: FontWeight.bold),
                 ),
               ),
+              SizedBox(height: 10,),
               Row(
                 children: <Widget>[
                   SizedBox(
@@ -119,50 +138,54 @@ class _AnnouncementsState extends State<Announcements> {
                 ],
               ),
               MessagesStream(),
-              Container(
-                decoration: BoxDecoration(
-                  border: Border(
-                    top: BorderSide(color: Colors.lightBlueAccent, width: 2.0),
-                  ),
-                ),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
-                    Expanded(
-                      child: TextField(
-                        controller: messageTextController,
-                        onChanged: (value) {
-                          messageText = value;
-                        },
-                        decoration: InputDecoration(
-                          contentPadding: EdgeInsets.symmetric(
-                              vertical: 10.0, horizontal: 20.0),
-                          hintText: 'Hi there...',
-                          border: InputBorder.none,
-                        ),
-                      ),
-                    ),
-                    FlatButton(
-                      onPressed: () {
-                        messageTextController.clear();
-                        _firestore.collection("Announcements").add({
-                          'announcement': messageText,
-                          'time': FieldValue.serverTimestamp(),
-                          //'sender': "gaurav@email.com",
-                        });
-                      },
-                      child: Text(
-                        'Send',
-                        style: TextStyle(
-                          color: Colors.orangeAccent,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18.0,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+
+              // for developers
+
+
+              // Container(
+              //   decoration: BoxDecoration(
+              //     border: Border(
+              //       top: BorderSide(color: Colors.lightBlueAccent, width: 2.0),
+              //     ),
+              //   ),
+              //   child: Row(
+              //     crossAxisAlignment: CrossAxisAlignment.center,
+              //     children: <Widget>[
+              //       Expanded(
+              //         child: TextField(
+              //           controller: messageTextController,
+              //           onChanged: (value) {
+              //             messageText = value;
+              //           },
+              //           decoration: InputDecoration(
+              //             contentPadding: EdgeInsets.symmetric(
+              //                 vertical: 10.0, horizontal: 20.0),
+              //             hintText: 'Hi there...',
+              //             border: InputBorder.none,
+              //           ),
+              //         ),
+              //       ),
+              //       FlatButton(
+              //         onPressed: () {
+              //           messageTextController.clear();
+              //           _firestore.collection("Announcements").add({
+              //             'announcement': messageText,
+              //             'time': FieldValue.serverTimestamp(),
+              //             //'sender': "gaurav@email.com",
+              //           });
+              //         },
+              //         child: Text(
+              //           'Send',
+              //           style: TextStyle(
+              //             color: Colors.orangeAccent,
+              //             fontWeight: FontWeight.bold,
+              //             fontSize: 18.0,
+              //           ),
+              //         ),
+              //       ),
+              //     ],
+              //   ),
+              // ),
             ],
           ),
         ),

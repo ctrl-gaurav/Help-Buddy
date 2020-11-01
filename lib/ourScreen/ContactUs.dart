@@ -82,16 +82,22 @@ class _ContactUsState extends State<ContactUs> {
                 width: 10.0,
                 height: 20.0,
               ),
-              // Container(
-              //   child: Container(
-              //       decoration: BoxDecoration(
-              //           // image: DecorationImage(
-              //           //     image: AssetImage(widget.heroTag),
-              //           //     fit: BoxFit.contain),
-              //       ),
-              //       height: 150.0,
-              //       width: 150.0),
-              // ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Center(
+                  child: Text(
+                    "Here you can post any Bugs regarding app or any kind of Help ! We will try to resolve your issue as soon as possible \nYou can also request for new features Here or Give us feedback So we can improve ! ",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontFamily: 'Product Sans',
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black54,
+                    ),
+                    //
+                  ),
+                ),
+              ),
               SizedBox(
                 width: 10.0,
                 height: 15.0,
@@ -99,7 +105,7 @@ class _ContactUsState extends State<ContactUs> {
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 50.0),
                 child: Text(
-                  'Queries',
+                  'Issues Raised : ',
                   style: TextStyle(
                       fontFamily: 'Montserrat',
                       fontSize: 25.0,
@@ -137,7 +143,7 @@ class _ContactUsState extends State<ContactUs> {
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.symmetric(
                               vertical: 10.0, horizontal: 20.0),
-                          hintText: 'Hi there...',
+                          hintText: 'Type Here Something ...',
                           border: InputBorder.none,
                         ),
                       ),

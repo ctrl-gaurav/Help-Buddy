@@ -86,18 +86,36 @@ class _SecondScreenState extends State<SecondScreen> {
                     ),
                     //
                     Container(
-                      margin: EdgeInsets.only(left: 38),
+                      margin: EdgeInsets.only(left: 20),
                       child: Row(
                         children: [
-                          Neu_button(
-                            char: 'G',
+                          FlatButton(
+                            child: Neu_button(
+                              char: 'G',
+                            ),
+                            onPressed: (){
+                              Fluttertoast.showToast(
+                                msg: "This Feature Will Be Available Soon !",
+                                toastLength: Toast.LENGTH_SHORT,
+                                gravity: ToastGravity.BOTTOM,
+                                timeInSecForIosWeb: 1,
+                              );
+                            },
                           ),
-                          SizedBox(
-                            width: 25,
+
+                          FlatButton(
+                            child: Neu_button(
+                              char: 'f',
+                            ),
+                            onPressed: (){
+                              Fluttertoast.showToast(
+                                msg: "This Feature Will Be Available Soon !",
+                                toastLength: Toast.LENGTH_SHORT,
+                                gravity: ToastGravity.BOTTOM,
+                                timeInSecForIosWeb: 1,
+                              );
+                            },
                           ),
-                          Neu_button(
-                            char: 'f',
-                          )
                         ],
                       ),
                     ),
@@ -221,8 +239,12 @@ class _SecondScreenState extends State<SecondScreen> {
                             Fluttertoast.showToast(
                               msg: e.toString(),
                               toastLength: Toast.LENGTH_SHORT,
-                              gravity: ToastGravity.CENTER,
-                              timeInSecForIosWeb: 5,
+                              gravity: ToastGravity.BOTTOM,
+                            );
+                            Fluttertoast.showToast(
+                              msg: "Please Try Again or Contact Us ",
+                              toastLength: Toast.LENGTH_SHORT,
+                              gravity: ToastGravity.BOTTOM,
                             );
                             setState(() {
                               showSpinner = false;
@@ -256,40 +278,42 @@ class _SecondScreenState extends State<SecondScreen> {
                       ),
                     ),
                     SizedBox(
-                      height: 180,
+                      height: 250,
                     ),
-                    Row(
-                      children: <Widget>[
-                        SizedBox(
-                          width: 280,
-                        ),
-                        Container(
-                          height: 55.0,
-                          width: 125.0,
-                          decoration: BoxDecoration(
-                              border: Border.all(
-                                  color: Colors.grey,
-                                  style: BorderStyle.solid,
-                                  width: 1.0),
-                              borderRadius: BorderRadius.circular(30.0),
-                              color: Color(0xFF1C1428)),
-                          child: FlatButton(
-                            onPressed: (){
-                              Navigator.push(
-                                context,
-                                PageRouteBuilder(
-                                  transitionDuration: Duration(seconds: 1),
-                                  pageBuilder: (_, __, ___) => ContactUs(),
-                                ),
-                              );
-                            },
-                              child: Text('Contact Us',
-                                  style: TextStyle(
-                                      fontFamily: 'Montserrat',
-                                      color: Colors.white,
-                                      fontSize: 15.0))),
-                        ),
-                      ],
+                    SafeArea(
+                      child: Row(
+                        children: <Widget>[
+                          SizedBox(
+                            width: 280,
+                          ),
+                          Container(
+                            height: 55.0,
+                            width: 125.0,
+                            decoration: BoxDecoration(
+                                border: Border.all(
+                                    color: Colors.grey,
+                                    style: BorderStyle.solid,
+                                    width: 1.0),
+                                borderRadius: BorderRadius.circular(30.0),
+                                color: Color(0xFF1C1428)),
+                            child: FlatButton(
+                              onPressed: (){
+                                Navigator.push(
+                                  context,
+                                  PageRouteBuilder(
+                                    transitionDuration: Duration(seconds: 1),
+                                    pageBuilder: (_, __, ___) => ContactUs(),
+                                  ),
+                                );
+                              },
+                                child: Text('Contact Us',
+                                    style: TextStyle(
+                                        fontFamily: 'Montserrat',
+                                        color: Colors.white,
+                                        fontSize: 15.0))),
+                          ),
+                        ],
+                      ),
                     ),
                   ],
                 ),
