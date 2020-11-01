@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 final _firestore = Firestore.instance;
 
@@ -47,7 +48,7 @@ class _ClassesLecturesState extends State<ClassesLectures> {
 
   void messagesStreams() async {
     await for (var snapshot
-    in _firestore.collection('ClassesLectures').snapshots()) {
+        in _firestore.collection('ClassesLectures').snapshots()) {
       for (var message in snapshot.documents) {
         print(message.data());
       }
@@ -98,7 +99,6 @@ class _ClassesLecturesState extends State<ClassesLectures> {
                         Navigator.pop(context);
                       },
                     ),
-
                   ],
                 ),
               ),
@@ -144,7 +144,59 @@ class _ClassesLecturesState extends State<ClassesLectures> {
                       onPressed: () {}),
                 ],
               ),
+              Center(
+                child: InkWell(
+                  child: Container(
+                    height: 55.0,
+                    width: 125.0,
+                    decoration: BoxDecoration(
+                        border: Border.all(
+                            color: Colors.grey,
+                            style: BorderStyle.solid,
+                            width: 1.0),
+                        borderRadius: BorderRadius.circular(30.0),
+                        color: Color(0xff0c2551)),
+                    child: FlatButton(
+                      onPressed: () {
+                        launch(
+                            'https://mujmanipal-my.sharepoint.com/:f:/g/personal/gaurav_199301159_muj_manipal_edu/Erf1SjRpqgFNvsIxwYT3hA8BRuxZt4-BFdxlW1azk2xvag?e=eUadci');
+                      },
+                      child: Text(
+                        'Watch Here ',
+                        style: TextStyle(
+                          fontFamily: 'Montserrat',
+                          color: Colors.white,
+                          fontSize: 15.0,
+                        ),
+                      ),
+                    ),
+                  ),
+                  onTap: () => launch(
+                      'https://mujmanipal-my.sharepoint.com/:f:/g/personal/gaurav_199301159_muj_manipal_edu/Erf1SjRpqgFNvsIxwYT3hA8BRuxZt4-BFdxlW1azk2xvag?e=eUadci'),
+                ),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Padding(
+                padding: const EdgeInsets.all(18.0),
+                child: Center(
+                  child: Container(
+                      child: Text(
+                      'For now you can watch or download all recorded lectures from OneDrive',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontFamily: 'Product Sans',
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black54,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
               MessagesStream(),
+
               // Container(
               //   decoration: BoxDecoration(
               //     border: Border(

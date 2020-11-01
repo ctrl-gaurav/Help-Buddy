@@ -205,53 +205,108 @@ class _SecondScreenState extends State<SecondScreen> {
                       ),
                       //
                     ),
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width * .6,
-                      child: RoundedButton(
-                        text: "Log in",
-                        fontSize: 20,
-                        press: () async {
-                          setState(() {
-                            showSpinner = true;
-                          });
-                          try {
-                            final user = await _auth.signInWithEmailAndPassword(
-                                email: email, password: password);
-                            if (user != null) {
-                              Navigator.push(
-                                  context,
-                                  new MaterialPageRoute(
-                                      builder: (context) => MyResourcePage()));
-                            }
-                            setState(() {
-                              showSpinner = false;
-                            });
-                          } catch (e) {
-                            // Fluttertoast.showToast(
-                            //     msg: "This is Center Short Toast",
-                            //     toastLength: Toast.LENGTH_SHORT,
-                            //     gravity: ToastGravity.CENTER,
-                            //     timeInSecForIosWeb: 1,
-                            //     backgroundColor: Colors.red,
-                            //     textColor: Colors.white,
-                            //     fontSize: 16.0
-                            // );
-                            Fluttertoast.showToast(
-                              msg: e.toString(),
-                              toastLength: Toast.LENGTH_SHORT,
-                              gravity: ToastGravity.BOTTOM,
-                            );
-                            Fluttertoast.showToast(
-                              msg: "Please Try Again or Contact Us ",
-                              toastLength: Toast.LENGTH_SHORT,
-                              gravity: ToastGravity.BOTTOM,
-                            );
-                            setState(() {
-                              showSpinner = false;
-                            });
-                          }
-                        },
-                      ),
+                    Column(
+                      children: <Widget>[
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width * .6,
+                          child: RoundedButton(
+                            text: "Log in",
+                            fontSize: 20,
+                            press: () async {
+                              setState(() {
+                                showSpinner = true;
+                              });
+                              try {
+                                final user = await _auth.signInWithEmailAndPassword(
+                                    email: email, password: password);
+                                if (user != null) {
+                                  Navigator.push(
+                                      context,
+                                      new MaterialPageRoute(
+                                          builder: (context) => MyResourcePage()));
+                                }
+                                setState(() {
+                                  showSpinner = false;
+                                });
+                              } catch (e) {
+                                // Fluttertoast.showToast(
+                                //     msg: "This is Center Short Toast",
+                                //     toastLength: Toast.LENGTH_SHORT,
+                                //     gravity: ToastGravity.CENTER,
+                                //     timeInSecForIosWeb: 1,
+                                //     backgroundColor: Colors.red,
+                                //     textColor: Colors.white,
+                                //     fontSize: 16.0
+                                // );
+                                Fluttertoast.showToast(
+                                  msg: e.toString(),
+                                  toastLength: Toast.LENGTH_SHORT,
+                                  gravity: ToastGravity.BOTTOM,
+                                );
+                                Fluttertoast.showToast(
+                                  msg: "Please Try Again or Contact Us ",
+                                  toastLength: Toast.LENGTH_SHORT,
+                                  gravity: ToastGravity.BOTTOM,
+                                );
+                                setState(() {
+                                  showSpinner = false;
+                                });
+                              }
+                            },
+                          ),
+                        ),
+
+                        // for developer
+
+                        // SizedBox(
+                        //   width: MediaQuery.of(context).size.width * .6,
+                        //   child: RoundedButton(
+                        //     text: "Register",
+                        //     fontSize: 20,
+                        //     press: () async {
+                        //       setState(() {
+                        //         showSpinner = true;
+                        //       });
+                        //       try {
+                        //         final user = await _auth.createUserWithEmailAndPassword(
+                        //             email: email, password: password);
+                        //         if (user != null) {
+                        //           Navigator.push(
+                        //               context,
+                        //               new MaterialPageRoute(
+                        //                   builder: (context) => MyResourcePage()));
+                        //         }
+                        //         setState(() {
+                        //           showSpinner = false;
+                        //         });
+                        //       } catch (e) {
+                        //         // Fluttertoast.showToast(
+                        //         //     msg: "This is Center Short Toast",
+                        //         //     toastLength: Toast.LENGTH_SHORT,
+                        //         //     gravity: ToastGravity.CENTER,
+                        //         //     timeInSecForIosWeb: 1,
+                        //         //     backgroundColor: Colors.red,
+                        //         //     textColor: Colors.white,
+                        //         //     fontSize: 16.0
+                        //         // );
+                        //         Fluttertoast.showToast(
+                        //           msg: e.toString(),
+                        //           toastLength: Toast.LENGTH_SHORT,
+                        //           gravity: ToastGravity.BOTTOM,
+                        //         );
+                        //         Fluttertoast.showToast(
+                        //           msg: "Please Try Again or Contact Us ",
+                        //           toastLength: Toast.LENGTH_SHORT,
+                        //           gravity: ToastGravity.BOTTOM,
+                        //         );
+                        //         setState(() {
+                        //           showSpinner = false;
+                        //         });
+                        //       }
+                        //     },
+                        //   ),
+                        // ),
+                      ],
                     ),
                     RichText(
                       text: TextSpan(
@@ -273,7 +328,7 @@ class _SecondScreenState extends State<SecondScreen> {
                               fontWeight: FontWeight.bold,
                               color: Color(0xff90b7ff),
                             ),
-                          )
+                          ),
                         ],
                       ),
                     ),

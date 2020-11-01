@@ -105,7 +105,8 @@ class _ContactUsState extends State<ContactUs> {
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 50.0),
                 child: Text(
-                  'Issues Raised : ',
+                  'Type Like This \n Your Name : Your Query',
+                  textAlign: TextAlign.center,
                   style: TextStyle(
                       fontFamily: 'Montserrat',
                       fontSize: 25.0,
@@ -125,6 +126,9 @@ class _ContactUsState extends State<ContactUs> {
                 ],
               ),
               MessagesStream(),
+
+              // for developers
+
               Container(
                 decoration: BoxDecoration(
                   border: Border(
