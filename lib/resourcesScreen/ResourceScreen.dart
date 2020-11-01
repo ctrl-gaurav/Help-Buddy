@@ -1,10 +1,12 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:help_buddy/ourScreen/Announcements.dart';
 import 'package:help_buddy/thirdScreen/AssignmentsDate.dart';
 import 'package:help_buddy/thirdScreen/ClassesLectures.dart';
 import 'package:help_buddy/thirdScreen/ResoourcesAndMaterial.dart';
 import 'package:help_buddy/thirdScreen/TomorrowSchedule.dart';
+import 'package:help_buddy/ourScreen/ContactUs.dart';
 
 class ResourceScreen extends StatelessWidget {
   // This widget is the root of your application.
@@ -18,19 +20,16 @@ class ResourceScreen extends StatelessWidget {
 }
 
 class MyResourcePage extends StatefulWidget {
-
-
   @override
   _MyResourcePageState createState() => _MyResourcePageState();
 }
 
 class _MyResourcePageState extends State<MyResourcePage> {
-
   final _auth = FirebaseAuth.instance;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xff0c2551),//0xFF21BFBD
+      backgroundColor: Color(0xff0c2551), //0xFF21BFBD
       body: ListView(
         children: <Widget>[
           Padding(
@@ -54,16 +53,23 @@ class _MyResourcePageState extends State<MyResourcePage> {
                         IconButton(
                           icon: Icon(Icons.info_outline),
                           color: Colors.white,
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              PageRouteBuilder(
+                                // transitionDuration: Duration(seconds: 1),
+                                pageBuilder: (_, __, ___) => Announcements(),
+                              ),
+                            );
+                          },
                         ),
                         IconButton(
                           icon: Icon(Icons.exit_to_app),
                           color: Colors.white,
                           onPressed: () async {
-                              await _auth.signOut();
-                              Navigator.pop(context);
-                              Navigator.pop(context);
-
+                            await _auth.signOut();
+                            Navigator.pop(context);
+                            Navigator.pop(context);
                           },
                         )
                       ],
@@ -91,7 +97,7 @@ class _MyResourcePageState extends State<MyResourcePage> {
               ],
             ),
           ),
-          SizedBox(height: 40.0),
+          SizedBox(height: 35.0),
           Container(
             height: MediaQuery.of(context).size.height - 185.0,
             decoration: BoxDecoration(
@@ -103,62 +109,110 @@ class _MyResourcePageState extends State<MyResourcePage> {
               padding: EdgeInsets.only(left: 25.0, right: 20.0),
               children: <Widget>[
                 Padding(
-                    padding: EdgeInsets.only(top: 45.0),
-                    child: Container(
-                        height: MediaQuery.of(context).size.height - 300.0,
-                        child: ListView(children: [
-                          _buildFoodItem1('assets/tomorrowSchedule.png',
-                              'Tomorrow Schedule', ''),
-                          _buildFoodItem2('assets/assignments.png',
-                              'Assignments Due Dates', ''),
-                          _buildFoodItem3('assets/resources.png',
-                              'Resources and Material', ''),
-                          _buildFoodItem4(
-                              'assets/lecture.png', 'Classes Lectures', '')
-                        ]))),
+                  padding: EdgeInsets.only(top: 45.0),
+                  child: Container(
+                    height: MediaQuery.of(context).size.height - 300.0,
+                    child: ListView(
+                      children: [
+                        _buildFoodItem1('assets/tomorrowSchedule.png',
+                            'Tomorrow Schedule', ''),
+                        _buildFoodItem2('assets/assignments.png',
+                            'Assignments Due Dates', ''),
+                        _buildFoodItem3('assets/resources.png',
+                            'Resources and Material', ''),
+                        _buildFoodItem4(
+                            'assets/lecture.png', 'Classes Lectures', '')
+                      ],
+                    ),
+                  ),
+                ),
+                // Row(
+                //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                //   children: <Widget>[
+                //     // Container(
+                //     //   height: 55.0,
+                //     //   width: 50.0,
+                //     //   decoration: BoxDecoration(
+                //     //     border: Border.all(
+                //     //         color: Colors.grey,
+                //     //         style: BorderStyle.solid,
+                //     //         width: 1.0),
+                //     //     borderRadius: BorderRadius.circular(10.0),
+                //     //   ),
+                //     //   child: Center(
+                //     //     child: Icon(Icons.search, color: Colors.black),
+                //     //   ),
+                //     // ),
+                //     // Container(
+                //     //   height: 55.0,
+                //     //   width: 50.0,
+                //     //   decoration: BoxDecoration(
+                //     //     border: Border.all(
+                //     //         color: Colors.grey,
+                //     //         style: BorderStyle.solid,
+                //     //         width: 1.0),
+                //     //     borderRadius: BorderRadius.circular(10.0),
+                //     //   ),
+                //     //   child: Center(
+                //     //     child: Icon(Icons.account_circle, color: Colors.black),
+                //     //   ),
+                //     // ),
+                //     SizedBox(width: 200,),
+                //     Container(
+                //       height: 55.0,
+                //       width: 100.0,
+                //       decoration: BoxDecoration(
+                //           border: Border.all(
+                //               color: Colors.grey,
+                //               style: BorderStyle.solid,
+                //               width: 1.0),
+                //           borderRadius: BorderRadius.circular(10.0),
+                //           color: Color(0xFF1C1428)),
+                //       child: FlatButton(
+                //         onPressed: (){
+                //           Navigator.push(
+                //             context,
+                //             PageRouteBuilder(
+                //               pageBuilder: (_, __, ___) => ContactUs(),
+                //             ),
+                //           );
+                //         },
+                //         child: Center(
+                //             child: Text('Contact Us',
+                //                 style: TextStyle(
+                //                     fontFamily: 'Montserrat',
+                //                     color: Colors.white,
+                //                     fontSize: 15.0))),
+                //       ),
+                //     ),
+                //   ],
+                // ),
+
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
-                    // Container(
-                    //   height: 55.0,
-                    //   width: 50.0,
-                    //   decoration: BoxDecoration(
-                    //     border: Border.all(
-                    //         color: Colors.grey,
-                    //         style: BorderStyle.solid,
-                    //         width: 1.0),
-                    //     borderRadius: BorderRadius.circular(10.0),
-                    //   ),
-                    //   child: Center(
-                    //     child: Icon(Icons.search, color: Colors.black),
-                    //   ),
-                    // ),
-                    // Container(
-                    //   height: 55.0,
-                    //   width: 50.0,
-                    //   decoration: BoxDecoration(
-                    //     border: Border.all(
-                    //         color: Colors.grey,
-                    //         style: BorderStyle.solid,
-                    //         width: 1.0),
-                    //     borderRadius: BorderRadius.circular(10.0),
-                    //   ),
-                    //   child: Center(
-                    //     child: Icon(Icons.account_circle, color: Colors.black),
-                    //   ),
-                    // ),
-                    SizedBox(width: 200,),
+                    SizedBox(
+                      width: 210,
+                    ),
                     Container(
                       height: 55.0,
-                      width: 100.0,
+                      width: 125.0,
                       decoration: BoxDecoration(
                           border: Border.all(
                               color: Colors.grey,
                               style: BorderStyle.solid,
                               width: 1.0),
-                          borderRadius: BorderRadius.circular(10.0),
+                          borderRadius: BorderRadius.circular(30.0),
                           color: Color(0xFF1C1428)),
-                      child: Center(
+                      child: FlatButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              PageRouteBuilder(
+                                // transitionDuration: Duration(seconds: 1),
+                                pageBuilder: (_, __, ___) => ContactUs(),
+                              ),
+                            );
+                          },
                           child: Text('Contact Us',
                               style: TextStyle(
                                   fontFamily: 'Montserrat',
@@ -192,7 +246,7 @@ class _MyResourcePageState extends State<MyResourcePage> {
               Navigator.push(
                 context,
                 PageRouteBuilder(
-                  transitionDuration: Duration(seconds: 1),
+                  // transitionDuration: Duration(seconds: 1),
                   pageBuilder: (_, __, ___) => TomorrowSchedule(
                     heroTag: imgPath,
                   ),
@@ -253,7 +307,7 @@ class _MyResourcePageState extends State<MyResourcePage> {
               Navigator.push(
                 context,
                 PageRouteBuilder(
-                  transitionDuration: Duration(seconds: 1),
+                  //transitionDuration: Duration(seconds: 1),
                   pageBuilder: (_, __, ___) => AssignmentsDate(
                     heroTag: imgPath,
                   ),
@@ -313,7 +367,7 @@ class _MyResourcePageState extends State<MyResourcePage> {
               Navigator.push(
                 context,
                 PageRouteBuilder(
-                  transitionDuration: Duration(seconds: 1),
+                  //transitionDuration: Duration(seconds: 1),
                   pageBuilder: (_, __, ___) => ResourcesAndMaterial(
                     heroTag: imgPath,
                   ),
@@ -375,7 +429,7 @@ class _MyResourcePageState extends State<MyResourcePage> {
               Navigator.push(
                 context,
                 PageRouteBuilder(
-                  transitionDuration: Duration(seconds: 1),
+                  //transitionDuration: Duration(seconds: 1),
                   pageBuilder: (_, __, ___) => ClassesLectures(
                     heroTag: imgPath,
                   ),

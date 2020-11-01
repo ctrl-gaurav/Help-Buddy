@@ -1,19 +1,19 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 
 final _firestore = Firestore.instance;
 
-class AssignmentsDate extends StatefulWidget {
+class Announcements extends StatefulWidget {
   final heroTag;
 
-  const AssignmentsDate({Key key, this.heroTag});
+  const Announcements({Key key, this.heroTag});
   @override
-  _AssignmentsDateState createState() => _AssignmentsDateState();
+  _AnnouncementsState createState() => _AnnouncementsState();
 }
 
-class _AssignmentsDateState extends State<AssignmentsDate> {
+class _AnnouncementsState extends State<Announcements> {
   final messageTextController = TextEditingController();
   final _auth = FirebaseAuth.instance;
   FirebaseUser loggedInUser;
@@ -38,16 +38,10 @@ class _AssignmentsDateState extends State<AssignmentsDate> {
     }
   }
 
-  // void getMessages() async{
-  //   final messages = await _firestore.collection("messages").getDocuments();
-  //   for(var message in messages.documents){
-  //     print(message.data());
-  //   }
-  // }
 
   void messagesStreams() async {
     await for (var snapshot
-    in _firestore.collection('AssignmentsDate').snapshots()) {
+    in _firestore.collection('announcements').snapshots()) {
       for (var message in snapshot.documents) {
         print(message.data());
       }
@@ -57,23 +51,6 @@ class _AssignmentsDateState extends State<AssignmentsDate> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   leading: null,
-      //   actions: <Widget>[
-      //     IconButton(
-      //       icon: Icon(Icons.assessment),
-      //       onPressed: () {
-      //         messagesStreams();
-      //         // _auth.signOut();
-      //         // Navigator.pop(context);
-      //         //Implement logout functionality
-      //       },
-      //     )
-      //   ],
-      //   title: Text('Tomorrow Schedule'),
-      //   backgroundColor: Colors.orange,
-      // ),
-
       body: SafeArea(
         child: Container(
           decoration: BoxDecoration(
@@ -98,7 +75,6 @@ class _AssignmentsDateState extends State<AssignmentsDate> {
                         Navigator.pop(context);
                       },
                     ),
-
                   ],
                 ),
               ),
@@ -106,18 +82,16 @@ class _AssignmentsDateState extends State<AssignmentsDate> {
                 width: 10.0,
                 height: 20.0,
               ),
-              Container(
-                child: Hero(
-                  tag: widget.heroTag,
-                  child: Container(
-                      decoration: BoxDecoration(
-                          image: DecorationImage(
-                              image: AssetImage(widget.heroTag),
-                              fit: BoxFit.contain)),
-                      height: 150.0,
-                      width: 150.0),
-                ),
-              ),
+              // Container(
+              //   child: Container(
+              //       decoration: BoxDecoration(
+              //           // image: DecorationImage(
+              //           //     image: AssetImage(widget.heroTag),
+              //           //     fit: BoxFit.contain),
+              //       ),
+              //       height: 150.0,
+              //       width: 150.0),
+              // ),
               SizedBox(
                 width: 10.0,
                 height: 15.0,
@@ -125,7 +99,7 @@ class _AssignmentsDateState extends State<AssignmentsDate> {
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 50.0),
                 child: Text(
-                  'Assignments Date',
+                  'Announcements',
                   style: TextStyle(
                       fontFamily: 'Montserrat',
                       fontSize: 25.0,
@@ -145,53 +119,50 @@ class _AssignmentsDateState extends State<AssignmentsDate> {
                 ],
               ),
               MessagesStream(),
-
-              // for developer
-
-              // Container(
-              //   decoration: BoxDecoration(
-              //     border: Border(
-              //       top: BorderSide(color: Colors.lightBlueAccent, width: 2.0),
-              //     ),
-              //   ),
-              //   child: Row(
-              //     crossAxisAlignment: CrossAxisAlignment.center,
-              //     children: <Widget>[
-              //       Expanded(
-              //         child: TextField(
-              //           controller: messageTextController,
-              //           onChanged: (value) {
-              //             messageText = value;
-              //           },
-              //           decoration: InputDecoration(
-              //             contentPadding: EdgeInsets.symmetric(
-              //                 vertical: 10.0, horizontal: 20.0),
-              //             hintText: 'Hi there...',
-              //             border: InputBorder.none,
-              //           ),
-              //         ),
-              //       ),
-              //       FlatButton(
-              //         onPressed: () {
-              //           messageTextController.clear();
-              //           _firestore.collection("AssignmentsDate").add({
-              //             'NewAssignment': messageText,
-              //             'time': FieldValue.serverTimestamp(),
-              //             //'sender': "gaurav@email.com",
-              //           });
-              //         },
-              //         child: Text(
-              //           'Send',
-              //           style: TextStyle(
-              //             color: Colors.orangeAccent,
-              //             fontWeight: FontWeight.bold,
-              //             fontSize: 18.0,
-              //           ),
-              //         ),
-              //       ),
-              //     ],
-              //   ),
-              // ),
+              Container(
+                decoration: BoxDecoration(
+                  border: Border(
+                    top: BorderSide(color: Colors.lightBlueAccent, width: 2.0),
+                  ),
+                ),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    Expanded(
+                      child: TextField(
+                        controller: messageTextController,
+                        onChanged: (value) {
+                          messageText = value;
+                        },
+                        decoration: InputDecoration(
+                          contentPadding: EdgeInsets.symmetric(
+                              vertical: 10.0, horizontal: 20.0),
+                          hintText: 'Hi there...',
+                          border: InputBorder.none,
+                        ),
+                      ),
+                    ),
+                    FlatButton(
+                      onPressed: () {
+                        messageTextController.clear();
+                        _firestore.collection("Announcements").add({
+                          'announcement': messageText,
+                          'time': FieldValue.serverTimestamp(),
+                          //'sender': "gaurav@email.com",
+                        });
+                      },
+                      child: Text(
+                        'Send',
+                        style: TextStyle(
+                          color: Colors.orangeAccent,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18.0,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ],
           ),
         ),
@@ -205,7 +176,7 @@ class MessagesStream extends StatelessWidget {
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
       stream: _firestore
-          .collection("AssignmentsDate")
+          .collection("Announcements")
           .orderBy('time', descending: false)
           .snapshots(),
       // ignore: missing_return
@@ -220,7 +191,7 @@ class MessagesStream extends StatelessWidget {
         final messages = snapshot.data.documents;
         List<MessageBubble> messageBubbles = [];
         for (var message in messages) {
-          final messageText = message.data()['NewAssignment'];
+          final messageText = message.data()['announcement'];
           final messageTime = message.data()['time'] as Timestamp;
           //final messageSender = message.data()['sender'];
 

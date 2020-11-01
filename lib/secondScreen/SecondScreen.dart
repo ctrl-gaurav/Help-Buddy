@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:help_buddy/secondScreen/rounded_button.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:help_buddy/ourScreen/ContactUs.dart';
 
 class SecondScreen extends StatefulWidget {
   @override
@@ -273,6 +274,15 @@ class _SecondScreenState extends State<SecondScreen> {
                               borderRadius: BorderRadius.circular(30.0),
                               color: Color(0xFF1C1428)),
                           child: FlatButton(
+                            onPressed: (){
+                              Navigator.push(
+                                context,
+                                PageRouteBuilder(
+                                  transitionDuration: Duration(seconds: 1),
+                                  pageBuilder: (_, __, ___) => ContactUs(),
+                                ),
+                              );
+                            },
                               child: Text('Contact Us',
                                   style: TextStyle(
                                       fontFamily: 'Montserrat',

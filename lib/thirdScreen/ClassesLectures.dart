@@ -86,6 +86,22 @@ class _ClassesLecturesState extends State<ClassesLectures> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
+              Padding(
+                padding: EdgeInsets.only(top: 15.0, left: 10.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    IconButton(
+                      icon: Icon(Icons.arrow_back_ios),
+                      color: Colors.black,
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                    ),
+
+                  ],
+                ),
+              ),
               SizedBox(
                 width: 10.0,
                 height: 20.0,
@@ -129,50 +145,50 @@ class _ClassesLecturesState extends State<ClassesLectures> {
                 ],
               ),
               MessagesStream(),
-              Container(
-                decoration: BoxDecoration(
-                  border: Border(
-                    top: BorderSide(color: Colors.lightBlueAccent, width: 2.0),
-                  ),
-                ),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
-                    Expanded(
-                      child: TextField(
-                        controller: messageTextController,
-                        onChanged: (value) {
-                          messageText = value;
-                        },
-                        decoration: InputDecoration(
-                          contentPadding: EdgeInsets.symmetric(
-                              vertical: 10.0, horizontal: 20.0),
-                          hintText: 'Hi there...',
-                          border: InputBorder.none,
-                        ),
-                      ),
-                    ),
-                    FlatButton(
-                      onPressed: () {
-                        messageTextController.clear();
-                        _firestore.collection("ClassesLectures").add({
-                          'Text': messageText,
-                          'time': FieldValue.serverTimestamp(),
-                          //'sender': "gaurav@email.com",
-                        });
-                      },
-                      child: Text(
-                        'Send',
-                        style: TextStyle(
-                          color: Colors.orangeAccent,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18.0,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+              // Container(
+              //   decoration: BoxDecoration(
+              //     border: Border(
+              //       top: BorderSide(color: Colors.lightBlueAccent, width: 2.0),
+              //     ),
+              //   ),
+              //   child: Row(
+              //     crossAxisAlignment: CrossAxisAlignment.center,
+              //     children: <Widget>[
+              //       Expanded(
+              //         child: TextField(
+              //           controller: messageTextController,
+              //           onChanged: (value) {
+              //             messageText = value;
+              //           },
+              //           decoration: InputDecoration(
+              //             contentPadding: EdgeInsets.symmetric(
+              //                 vertical: 10.0, horizontal: 20.0),
+              //             hintText: 'Hi there...',
+              //             border: InputBorder.none,
+              //           ),
+              //         ),
+              //       ),
+              //       FlatButton(
+              //         onPressed: () {
+              //           messageTextController.clear();
+              //           _firestore.collection("ClassesLectures").add({
+              //             'Text': messageText,
+              //             'time': FieldValue.serverTimestamp(),
+              //             //'sender': "gaurav@email.com",
+              //           });
+              //         },
+              //         child: Text(
+              //           'Send',
+              //           style: TextStyle(
+              //             color: Colors.orangeAccent,
+              //             fontWeight: FontWeight.bold,
+              //             fontSize: 18.0,
+              //           ),
+              //         ),
+              //       ),
+              //     ],
+              //   ),
+              // ),
             ],
           ),
         ),
